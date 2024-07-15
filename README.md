@@ -64,15 +64,21 @@ export const PAGINATION_RANGE = 3; // should be an odd number greater than 1, e.
 
 ## Testing
 
-To test the pagination component, you can use the provided dummy data with 100 items. The component displays 10 items per page and provides pagination controls.
-
+To test the pagination component, I have used dummy data with 100 items in format 
+export type DUMMY_DATA_TYPE = {
+  id: number;
+  name: string;
+  description: string;
+};
 ### Sample Input
 
 Array of 100 items:
 
 ```json
 [
-  "Item 1", "Item 2", "Item 3", ..., "Item 100"
+  { id: 1, name: "Item 1", description: "Description for item 1" },
+  { id: 2, name: "Item 2", description: "Description for item 2" },
+  { id: 3, name: "Item 3", description: "Description for item 3" },, ..., { id: 100, name: "Item 100", description: "Description for item 100" }
 ]
 ```
 
