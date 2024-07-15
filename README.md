@@ -65,7 +65,8 @@ export const PAGINATION_RANGE = 3; // should be an odd number greater than 1, e.
 ## Testing
 
 To test the pagination component, I have used dummy data with 100 items in format 
-export type DUMMY_DATA_TYPE = {
+      
+type DUMMY_DATA_TYPE = {
   id: number;
   name: string;
   description: string;
