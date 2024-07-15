@@ -18,7 +18,7 @@ Make sure you have the following installed:
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/naveensmacks/paginationComp
    cd your-repo-name
    ```
 
