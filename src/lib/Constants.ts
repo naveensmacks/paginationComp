@@ -1,5 +1,7 @@
 export const ITEMS_PER_PAGE = 10;
+//it is nothing but the middle range of pages visible in pagination control eg: for PAGINATION_RANGE=3 then  1 ... 5 6 7 ... 10
 export const PAGINATION_RANGE = 3; //should be an odd number greater than 1, e.g. 3,5 are most used
+
 //Dummy data of 100 items
 export const DUMMY_DATA = [
   { id: 1, name: "Item 1", description: "Description for item 1" },

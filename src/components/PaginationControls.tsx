@@ -18,23 +18,38 @@ const getPaginationRange = (
   let before: boolean = false;
   let after: boolean = false;
   let paginationRange: number[] = [];
+  console.log("numberOfPages: ", numberOfPages);
+  console.log("range: ", range);
+  console.log("currentPage: ", currentPage);
+  console.log("rangeMedian: ", rangeMedian);
   if (currentPage - rangeMedian <= 2) {
+    console.log("1st block: ");
     paginationRange = Array.from({ length: range - 1 }, (_, i) => 2 + i);
-    after = true;
+    if (numberOfPages > range + 1) after = true;
+    console.log("paginationRange: ", paginationRange);
+    console.log("after: ", after);
+    console.log("before:", before);
   } else if (
     currentPage - rangeMedian > 2 &&
     currentPage + rangeMedian < numberOfPages - 1
   ) {
+    console.log("2nd block: ");
     const rangeStart = currentPage - rangeMedian;
     paginationRange = Array.from({ length: range }, (_, i) => rangeStart + i);
     before = true;
     after = true;
+    console.log("paginationRange: ", paginationRange);
+    console.log("after: ", after);
+    console.log("before:", before);
   } else {
-    before = true;
+    console.log("3rd block: ");
+    if (numberOfPages > range + 1) before = true;
     paginationRange = Array.from(
       { length: range - 1 },
       (_, i) => numberOfPages - range + 1 + i
     );
+    console.log("after: ", after);
+    console.log("before:", before);
   }
 
   return [before, after, paginationRange] as const;
@@ -53,7 +68,6 @@ export default function PaginationControls({
     range,
     currentPage
   );
-  console.log("paginationRange: ", paginationRange);
   return (
     <div className="flex items-center justify-between gap-x-1">
       <NavigationButton
