@@ -1,4 +1,3 @@
-import { DUMMY_DATA_TYPE } from "../lib/types";
 import NavigationButton from "./NavigationButton";
 import PageButton from "./PageButton";
 
@@ -22,6 +21,16 @@ const getPaginationRange = (
   console.log("range: ", range);
   console.log("currentPage: ", currentPage);
   console.log("rangeMedian: ", rangeMedian);
+  if (numberOfPages < range * 2) {
+    paginationRange = Array.from(
+      { length: numberOfPages - 2 },
+      (_, i) => 2 + i
+    );
+    console.log("paginationRange: ", paginationRange);
+    console.log("after: ", after);
+    console.log("before:", before);
+    return [before, after, paginationRange] as const;
+  }
   if (currentPage - rangeMedian <= 2) {
     console.log("1st block: ");
     paginationRange = Array.from({ length: range - 1 }, (_, i) => 2 + i);
@@ -55,13 +64,13 @@ const getPaginationRange = (
   return [before, after, paginationRange] as const;
 };
 
-export default function PaginationControls({
+export default function PaginationControls<T>({
   items,
   itemsPerPage,
   range,
   currentPage,
   setCurrentPage,
-}: PaginationControlsProps<DUMMY_DATA_TYPE>) {
+}: PaginationControlsProps<T>) {
   const numberOfPages = Math.ceil(items.length / itemsPerPage);
   const [before, after, paginationRange] = getPaginationRange(
     numberOfPages,
